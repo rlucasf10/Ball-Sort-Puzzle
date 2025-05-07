@@ -1,0 +1,30 @@
+/**
+ * @file ballSort.cnf
+ * @brief Archivo de configuración para el juego Ball Sort Puzzle
+ * @author Ricardo Lucas Fernández
+ * @date Mayo 2025
+ * 
+ * Este archivo define la configuración inicial de los tubos para el juego Ball Sort Puzzle.
+ * El formato del archivo es el siguiente:
+ * 
+ * - Primera línea: Número total de tubos en el juego (incluyendo los vacíos)
+ * - Líneas siguientes: Configuración de cada tubo lleno, donde cada línea contiene
+ *   las letras que representan los colores de las bolas en ese tubo (desde el fondo hacia arriba)
+ * 
+ * Códigos de colores:
+ * - R: Rojo
+ * - G: Verde
+ * - B: Azul
+ * - Y: Amarillo
+ * - M: Magenta (si se usa)
+ * - C: Cian (si se usa)
+ * 
+ * Siempre se dejan 2 tubos vacíos al final (no aparecen en el archivo).
+ * El objetivo del juego es ordenar las bolas para que cada tubo contenga un solo color.
+ */
+
+6
+RBGY
+GYRB
+BYGR
+RGBY
