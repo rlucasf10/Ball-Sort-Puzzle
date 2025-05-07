@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/Plataforma-Windows-lightgrey" alt="Plataforma"/>
   
   <br>
-  <h3>Un adictivo juego de lógica donde ordenarás bolas de colores en tubos</h3>
+  <h3>Un juego de lógica donde ordenarás bolas de colores en tubos</h3>
 </div>
 
 ---
