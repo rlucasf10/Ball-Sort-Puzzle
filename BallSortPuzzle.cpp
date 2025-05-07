@@ -131,7 +131,7 @@ void mostrarInstrucciones()
     std::cout << "- Ingresa el número del tubo origen y destino (1-N)" << std::endl;
     std::cout << "- Solo puedes mover bolas si son del mismo color que la cima del tubo destino" << std::endl;
     std::cout << "  o si el tubo destino está vacío" << std::endl;
-    std::cout << "- Para salir del juego, pulsa 'q'" << std::endl;
+    std::cout << "- Para salir del juego, escribe 'q'" << std::endl;
     std::cout << "\n===========================================\n"
               << std::endl;
 }
@@ -180,22 +180,21 @@ int main()
         {
             std::cout << "El archivo existe en la ruta: " << ruta << std::endl;
             verificarArchivo.close();
+
+            if (juego.inicializar(ruta))
+            {
+                std::cout << "Configuración cargada correctamente desde: " << ruta << std::endl;
+                configuracionCargada = true;
+                break;
+            }
+            else
+            {
+                std::cout << "Error: El archivo existe pero tiene un formato incorrecto." << std::endl;
+            }
         }
         else
         {
             std::cout << "El archivo NO existe en la ruta: " << ruta << std::endl;
-            continue; // Intentar la siguiente ruta
-        }
-
-        if (juego.inicializar(ruta))
-        {
-            std::cout << "Configuración cargada correctamente desde: " << ruta << std::endl;
-            configuracionCargada = true;
-            break;
-        }
-        else
-        {
-            std::cout << "El archivo existe pero no se pudo cargar la configuración." << std::endl;
         }
     }
 

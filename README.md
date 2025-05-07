@@ -81,7 +81,7 @@ Una vez compilado, ejecuta el juego con:
 ./BallSortPuzzle.exe
 ```
 
-> **Nota**: Asegúrate de tener el archivo `ballSort.cnf` en el mismo directorio o en alguna de las ubicaciones predefinidas para que el juego pueda cargar la configuración inicial.
+> **Nota**: Asegúrate de tener el archivo `ballSort.cnf` en el mismo directorio que el ejecutable para que el juego pueda cargar la configuración inicial.
 
 ---
 
@@ -263,7 +263,7 @@ Todos los niveles creados correctamente tienen solución. Sin embargo, algunos n
 El número mínimo de movimientos varía según el nivel. El juego cuenta tus movimientos para que puedas intentar mejorar tu puntuación.
 
 ### El juego no encuentra el archivo de configuración, ¿qué hago?
-Asegúrate de que el archivo `ballSort.cnf` esté en la misma carpeta que el ejecutable del juego o en alguna de las rutas alternativas que el programa busca.
+Asegúrate de que el archivo `ballSort.cnf` esté en la misma carpeta que el ejecutable del juego.
 
 ### ¿Puedo tener más de 6 tubos?
 Sí, el juego soporta hasta 10 tubos en total. Modifica el archivo de configuración según sea necesario.
@@ -276,6 +276,6 @@ Escribe 'q' en cualquier momento para salir del juego.
 <div align="center">
   <p>
     Desarrollado con ❤️ como parte de un proyecto académico de Estructuras de Datos<br>
-    <b>© 2025 - [Nombre del Estudiante]</b>
+    <b>© 2025 - Ricardo Lucas Fernández</b>
   </p>
 </div>
