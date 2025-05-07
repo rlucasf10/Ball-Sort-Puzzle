@@ -131,7 +131,7 @@ void mostrarInstrucciones()
     std::cout << "- Ingresa el número del tubo origen y destino (1-N)" << std::endl;
     std::cout << "- Solo puedes mover bolas si son del mismo color que la cima del tubo destino" << std::endl;
     std::cout << "  o si el tubo destino está vacío" << std::endl;
-    std::cout << "- Para salir del juego, pulsa 'q' o 'ESC'" << std::endl;
+    std::cout << "- Para salir del juego, pulsa 'q'" << std::endl;
     std::cout << "\n===========================================\n"
               << std::endl;
 }
@@ -159,14 +159,10 @@ void mostrarFinJuego(bool victoria, int numMovimientos)
  */
 int main()
 {
-    // Lista de ubicaciones donde buscar el archivo de configuración usando arrays estándar
-    const int NUM_RUTAS = 5;
+    // Lista de ubicaciones donde buscar el archivo de configuración
+    const int NUM_RUTAS = 1;
     std::string rutasPosibles[NUM_RUTAS] = {
-        "ballSort.cnf",
-        "c:\\Users\\rluca\\Desktop\\workspace\\Ball-Sort-Puzzle\\ballSort.cnf",
-        ".\\ballSort.cnf", // Explícitamente en el directorio actual
-        "..\\ballSort.cnf",
-        "..\\..\\ballSort.cnf" // Dos niveles arriba por si acaso
+        "ballSort.cnf" // Solo la ruta correcta en la ubicación actual
     };
 
     bool configuracionCargada = false;
