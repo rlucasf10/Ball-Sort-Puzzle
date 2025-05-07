@@ -160,11 +160,14 @@ void mostrarFinJuego(bool victoria, int numMovimientos)
 int main()
 {
     // Lista de ubicaciones donde buscar el archivo de configuración usando arrays estándar
-    const int NUM_RUTAS = 3;
+    const int NUM_RUTAS = 5;
     std::string rutasPosibles[NUM_RUTAS] = {
         "ballSort.cnf",
-        "c:\\Users\\rluca\\Desktop\\workspace\\ballSort.cnf",
-        "..\\ballSort.cnf"};
+        "c:\\Users\\rluca\\Desktop\\workspace\\Ball-Sort-Puzzle\\ballSort.cnf",
+        ".\\ballSort.cnf", // Explícitamente en el directorio actual
+        "..\\ballSort.cnf",
+        "..\\..\\ballSort.cnf" // Dos niveles arriba por si acaso
+    };
 
     bool configuracionCargada = false;
     Juego juego;
@@ -175,11 +178,28 @@ int main()
         const std::string &ruta = rutasPosibles[i];
         std::cout << "Intentando cargar configuración desde: " << ruta << std::endl;
 
+        // Verificar si el archivo existe antes de intentar cargarlo
+        std::ifstream verificarArchivo(ruta);
+        if (verificarArchivo.good())
+        {
+            std::cout << "El archivo existe en la ruta: " << ruta << std::endl;
+            verificarArchivo.close();
+        }
+        else
+        {
+            std::cout << "El archivo NO existe en la ruta: " << ruta << std::endl;
+            continue; // Intentar la siguiente ruta
+        }
+
         if (juego.inicializar(ruta))
         {
             std::cout << "Configuración cargada correctamente desde: " << ruta << std::endl;
             configuracionCargada = true;
             break;
+        }
+        else
+        {
+            std::cout << "El archivo existe pero no se pudo cargar la configuración." << std::endl;
         }
     }
 

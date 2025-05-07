@@ -136,8 +136,37 @@ bool Juego::cargarConfiguracion(const std::string &nombreArchivo)
         return false;
     }
 
+    std::string linea;
+
+    // Ignorar comentarios y líneas vacías
+    while (std::getline(archivo, linea))
+    {
+        // Eliminar espacios en blanco al inicio y final
+        linea.erase(0, linea.find_first_not_of(" \t"));
+        if (linea.empty())
+            continue;
+
+        // Ignorar líneas que comienzan con // o /* o *
+        if (linea.substr(0, 2) == "//" || linea.substr(0, 2) == "/*" || linea[0] == '*')
+        {
+            continue;
+        }
+
+        // Encontramos una línea que no es comentario
+        break;
+    }
+
+    // La primera línea no comentada debe contener el número de pilas
     int numPilas = 0;
-    archivo >> numPilas;
+    try
+    {
+        numPilas = std::stoi(linea);
+    }
+    catch (const std::exception &e)
+    {
+        archivo.close();
+        return false;
+    }
 
     // Verificar que el número de pilas sea válido
     if (numPilas < 2 || numPilas > 10)
@@ -152,19 +181,39 @@ bool Juego::cargarConfiguracion(const std::string &nombreArchivo)
     // Leer la configuración de cada pila
     for (int i = 0; i < numPilas - 2; i++)
     { // Las dos últimas pilas siempre están vacías
-        for (int j = 0; j < 4; j++)
-        { // Cada pila tiene 4 bolas
-            char color;
-            archivo >> color;
+        // Leer la siguiente línea no comentada
+        while (std::getline(archivo, linea))
+        {
+            // Eliminar espacios en blanco al inicio y final
+            linea.erase(0, linea.find_first_not_of(" \t"));
+            if (linea.empty())
+                continue;
 
-            if (!archivo.good())
+            // Ignorar líneas de comentarios
+            if (linea.substr(0, 2) == "//" || linea.substr(0, 2) == "/*" || linea[0] == '*')
+            {
+                continue;
+            }
+
+            // Encontramos una línea que no es comentario
+            break;
+        }
+
+        if (linea.length() < 4)
+        {
+            archivo.close();
+            return false;
+        }
+
+        // Colocar las bolas en la pila (desde el fondo hacia la cima)
+        for (int j = 0; j < 4; j++)
+        {
+            char color = linea[j];
+            if (!tablero.colocarBola(i, color))
             {
                 archivo.close();
                 return false;
             }
-
-            // Colocar la bola en la pila (desde el fondo hacia la cima)
-            tablero.colocarBola(i, color);
         }
     }
 
